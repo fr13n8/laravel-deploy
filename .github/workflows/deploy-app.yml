@@ -49,7 +49,7 @@ jobs:
       with:
         host: ${{ secrets.SSH_IP }}
         username: ${{ secrets.SSH_USER_NAME }}
-        key: ${{ secrets.SSH_KEY }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.SSH_PORT }}
         source: ${{ github.sha }}.tar.gz
         target: /var/www/artifacts
