@@ -22,4 +22,7 @@ jobs:
         uses: shivammathur/setup-php@master
         with:
           php-version: 7.4
-          extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tkonizer, xml 
+          extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tokenizer, xml 
+
+      - name: Install composer dependencies
+        run: composer install --no-dev --no-interaction --prefer-dist
