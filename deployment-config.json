@@ -1,0 +1,11 @@
+[
+    {
+      "name": "oracle-server",
+      "ip": "129.159.127.125",
+      "username": "opc",
+      "port": "22",
+      "beforeHooks": "chmod -R 0777 ${RELEASE_PATH}/storage",
+      "afterHooks": "",
+      "path": "/var/www/laravel"
+    }
+]
