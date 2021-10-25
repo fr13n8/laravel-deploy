@@ -68,7 +68,6 @@ jobs:
           mkdir -p /var/www/laravel/releases/${GITHUB_SHA}"
           tar xzf /var/www/laravel/artifacts/${GITHUB_SHA}.tar.gz -C /var/www/laravel/releases/${GITHUB_SHA}"
           rm -rf /var/www/laravel/releases/${GITHUB_SHA}/storage
-
           mkdir -p /var/www/laravel/storage/{app,public,framework,logs}
           mkdir -p /var/www/laravel/storage/framework/{cache,sessions,testing,views}
           chmod -R 0777 /var/www/laravel/storage
