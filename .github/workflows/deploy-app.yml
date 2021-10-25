@@ -12,7 +12,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-
       - name: Compile css and javascript
         run: |
           npm install
@@ -37,4 +36,19 @@ jobs:
         with:
           name: app-build
           path: ${{ github.sha }}.tar.gz
-          
+
+  prepare-release-on-server: 
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/download-artifact@v2
+      with:
+        name: app-build
+    - name: Upload
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.SSH_IP }}
+        username: ${{ secrets.SSH_USER_NAME }}
+        key: ${{ secrets.SSH_KEY }}
+        port: ${{ secrets.SSH_PORT }}
+        source: ${{ github.sha }}.tar.gz
+        target: /var/www/artifacts
