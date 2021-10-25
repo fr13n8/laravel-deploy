@@ -140,7 +140,7 @@ jobs:
             ln -s -f ${BASE_PATH}/.env $RELEASE_PATH
             ln -s -f $STORAGE_PATH $RELEASE_PATH
             ln -s -n -f $RELEASE_PATH $ACTIVE_RELEASE_PATH
-            systemctl restart php-fpm
+            sudo systemctl restart php-fpm
     
   clean-up:
     name: "${{ matrix.server.name }}: Clean up"
