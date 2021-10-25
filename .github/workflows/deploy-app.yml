@@ -16,4 +16,10 @@ jobs:
       - name: Compile css and javascript
         run: |
           npm install
-          npm run prod 
+          npm run prod
+
+      - name: Config php 7.4
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: 7.4
+          extensions: mbstring, ctype, fileinfo, openssl, PDO, bcmath, json, tkonizer, xml 
