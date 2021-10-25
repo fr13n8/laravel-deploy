@@ -93,7 +93,7 @@ jobs:
     needs: [ create-deployment-artifatcs, prepare-release-on-servers ]
     strategy:
       matrix:
-        server: ${{ fromJson(needs.create-deployment-artifatcs.output.deployment-matrix) }}
+        server: ${{ fromJson(needs.create-deployment-artifatcs.outputs.deployment-matrix) }}
     steps:
       - name: Run before hooks
         uses: appleboy/ssh-action@master
@@ -148,7 +148,7 @@ jobs:
     needs: [ create-deployment-artifatcs, prepare-release-on-servers, run-before-hooks, activate-release]
     strategy:
       matrix:
-        server: ${{ fromJson(needs.create-deployment-artifatcs.output.deployment-matrix) }}
+        server: ${{ fromJson(needs.create-deployment-artifatcs.outputs.deployment-matrix) }}
     steps:
       - name: Run after hooks
         uses: appleboy/ssh-action@master
