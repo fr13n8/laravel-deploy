@@ -6,7 +6,7 @@ on:
     - main
 
 jobs: 
-  create-deployment-artefatcs:
+  create-deployment-artifatcs:
     name: Create deployment artefacts
     runs-on: ubuntu-latest
     steps:
@@ -26,3 +26,6 @@ jobs:
 
       - name: Install composer dependencies
         run: composer install --no-dev --no-interaction --prefer-dist
+
+      - name: Create deployment artifact
+        run: tar -czf app.tar.gz --exclude=*.git --exclude=node_modules *
