@@ -79,7 +79,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ matrix.server.port }}
         envs: GITHUB_SHA
-        scripts: |
+        script: |
            mkdir -p "${{ matrix.server.path }}/releases/${GITHUB_SHA}"
             tar xzf ${{ matrix.server.path }}/artifacts/${GITHUB_SHA}.tar.gz -C "${{ matrix.server.path }}/releases/${GITHUB_SHA}"
             rm -rf ${{ matrix.server.path }}/releases/${GITHUB_SHA}/storage
