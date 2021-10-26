@@ -155,6 +155,7 @@ jobs:
         env:
           RELEASES_PATH: ${{ matrix.server.path }}/releases
           ARTIFACTS_PATH: ${{ matrix.server.path }}/artifacts
+          ACTIVE_RELEASE_PATH: ${{ matrix.server.path }}/production
         with:
           host: ${{ matrix.server.ip }}
           username: ${{ matrix.server.username }}
@@ -164,3 +165,4 @@ jobs:
           script: |
             cd $RELEASES_PATH && ls -t -1 | tail -n +6 | xargs rm -rf
             cd $ARTIFACTS_PATH && ls -t -1 | tail -n +6 | xargs rm -rf
+            ${{ matrix.server.afterHooks }}
