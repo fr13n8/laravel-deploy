@@ -5,7 +5,7 @@
       "username": "opc",
       "port": "22",
       "beforeHooks": "",
-      "afterHooks": "",
+      "afterHooks": "php ${ACTIVE_RELEASE_PATH}/artisan optimize",
       "path": "/var/www/laravel"
     }
 ]
