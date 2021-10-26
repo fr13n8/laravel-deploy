@@ -167,7 +167,6 @@ jobs:
             cd $ARTIFACTS_PATH && ls -t -1 | tail -n +6 | xargs rm -rf
             ${{ matrix.server.afterHooks }}
 
-
   slack-notification:
     name: Slack Notification
     runs-on: ubuntu-latest
