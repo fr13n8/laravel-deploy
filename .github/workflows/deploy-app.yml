@@ -166,3 +166,19 @@ jobs:
             cd $RELEASES_PATH && ls -t -1 | tail -n +6 | xargs rm -rf
             cd $ARTIFACTS_PATH && ls -t -1 | tail -n +6 | xargs rm -rf
             ${{ matrix.server.afterHooks }}
+
+
+  slack-notification:
+    name: Slack Notification
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Slack Notification
+      uses: rtCamp/action-slack-notify@v2
+      env:
+        SLACK_TITLE: Deploy notify
+        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_CHANNEL: web-developing
+        SLACK_USERNAME: MyBot
+        SLACK_COLOR: ${{ job.status }}
+        SLACK_MESSAGE: 'Post Content :rocket:'
