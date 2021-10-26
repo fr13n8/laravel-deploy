@@ -61,7 +61,7 @@ class Handler extends ExceptionHandler
             $backtrace = str_replace([$dir],"", $backtrace);
             $backtrace = preg_replace('^(.*vendor.*)\n^','',$backtrace);
 
-            Log::channel('slack')->error('@channel'.PHP_EOL.'**Error:** `'.$e->getMessage() .'`'. PHP_EOL. '**Line:** ' . $e->getLine() . PHP_EOL. '**File:** `'. $e->getFile() .'`'. PHP_EOL . '**Trace:** `'.$backtrace.'`'.PHP_EOL);
+            Log::channel('slack')->error('@channel'.PHP_EOL.'**Error:** `'.$e->getMessage() .'`'. PHP_EOL. '**Line:** ' . $e->getLine() . PHP_EOL. '**File:** `'. $e->getFile() .'`'. PHP_EOL . '**Trace:** ```'.$backtrace.'```'.PHP_EOL);
         }
 
         return parent::render($request, $e);
