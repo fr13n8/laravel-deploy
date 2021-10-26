@@ -36,12 +36,29 @@ class Handler extends ExceptionHandler
     public function register()
     {
         $this->reportable(function (Throwable $e) {
+            //
+        });
+    }
+
+    /**
+     * Render an exception into an HTTP response.
+     *
+     * @param Request $request
+     * @param Exception $exception
+     * @return Response|JsonResponse|RedirectResponse|Redirector
+     * @throws Exception
+     */
+    public function render($request, Throwable $e)
+    {
+        if($e) {
             $dir = substr(__DIR__,0,-14);
             $backtrace =  $e->getTraceAsString();
             $backtrace = str_replace([$dir],"", $backtrace);
             $backtrace = preg_replace('^(.*vendor.*)\n^','',$backtrace);
 
             Log::channel('slack')->error('@here'.PHP_EOL.'**Error:** '.$e->getMessage() . PHP_EOL. '**Line:** ' . $e->getLine() . PHP_EOL. '**File:** '. $e->getFile() . PHP_EOL . '**Trace:**'.PHP_EOL. $backtrace);
-        });
+        }
+
+        return parent::render($request, $e);
     }
 }
