@@ -55,7 +55,7 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $e)
     {
-        if($e) {
+        if($this->shouldReport($e)) {
             $dir = substr(__DIR__,0,-14);
             $backtrace =  $e->getTraceAsString();
             $backtrace = str_replace([$dir],"", $backtrace);
