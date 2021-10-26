@@ -16,3 +16,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/home', function () {
+    try {
+        $view = route("test");
+    } catch (\Throwable $th) {
+        throw $th;
+    }
+});
