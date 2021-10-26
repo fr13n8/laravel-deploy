@@ -170,6 +170,7 @@ jobs:
   slack-notification:
     name: Slack Notification
     runs-on: ubuntu-latest
+    needs: [ create-deployment-artifatcs, prepare-release-on-servers, run-before-hooks, activate-release, clean-up ]
     steps:
     - uses: actions/checkout@v2
     - name: Slack Notification
