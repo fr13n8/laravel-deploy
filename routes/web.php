@@ -18,9 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-    try {
-        $view = route("test");
-    } catch (\Throwable $th) {
-        throw $th;
-    }
+        return route("test");
 });
