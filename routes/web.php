@@ -18,5 +18,5 @@ Route::get('/', function () {
 });
 
 Route::get('/home', function () {
-        return route("test");
+        return route("qwerty");
 });
